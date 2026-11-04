@@ -1,15 +1,15 @@
-# 🌾 AgriSmart — Single Page Agricultural Advisory Portal (SPA)
+# AgriSmart - Single Page Agricultural Advisory Portal (SPA)
 
-> **Web Development Laboratory (316U01L306) — Experiment 08**  
+> **Web Development Laboratory (316U01L306) - Experiment 08**  
 > **Institution:** K. J. Somaiya School of Engineering, Mumbai  
-> **Department:** Department of Computer Engineering • Academic Year 2026-27  
+> **Department:** Department of Computer Engineering - Academic Year 2026-27  
 > **Student:** Neev Mhadgut (Roll No: 16010125139, Batch: B3, Division: B)  
 > **Course Outcome (CO5):** Illustrate the concepts of various front-end web application developments, mockApi technologies frameworks using different web development tools.  
 > **Live Local Dev Server:** [http://localhost:5174/](http://localhost:5174/)
 
 ---
 
-## 📖 What This Application Does
+## 1. What This Application Does
 
 **AgriSmart** is an enterprise-grade Single Page Web Application (SPA) engineered with **React JS** and **React Router DOM**. It is designed specifically for precision farming and agricultural field telemetry monitoring.
 
@@ -17,9 +17,9 @@ In conventional agricultural portals (built as Multi-Page Applications), every n
 
 ---
 
-## 🚀 Key Functional Modules & Features
+## 2. Key Functional Modules & Features
 
-### 1. 🏠 Home View — Agro-Climatic Dashboard (`/`)
+### 1. Home View - Agro-Climatic Dashboard (`/`)
 * **Precision Farming Hero Banner:** Welcoming callout introducing the agronomic telemetry portal with quick call-to-action buttons navigating seamlessly to field plots or architecture docs.
 * **Live Weather & Micro-Climate Telemetry Cards:**
   * **Ambient Air Temperature:** `29.4 °C` (Nominal field operating range)
@@ -30,25 +30,25 @@ In conventional agricultural portals (built as Multi-Page Applications), every n
 
 ---
 
-### 2. 🌱 Crops & Field Telemetry View (`/crops`)
+### 2. Crops & Field Telemetry View (`/crops`)
 * **Declarative Dataset Mapping (`Array.prototype.map()`):** Dynamically renders four distinct farm plots directly from a structured JavaScript dataset:
   1. **Sugarcane (`Co 86032 Nira`):** Plot A1 (South Lowland), 3.5 Ha, Clay Loam. Soil moisture initializes at a **Critical** level (28%), displaying an urgent irrigation advisory.
   2. **Cotton (`Bt RCH-2 Hybrid`):** Plot B4 (East Terrace), 2.8 Ha, Black Cotton Regur soil at **Optimal** moisture (48%).
   3. **Wheat (`HD-2967 Pusa`):** Plot C2 (North Basin), 4.2 Ha, Alluvial Loam at **Moderate** moisture (36%), advising a light sprinkler cycle within 24h.
   4. **Soybean (`JS-335 Yellow`):** Plot D5 (West Ridge), 1.9 Ha, Silty Loam at **Optimal** field capacity (54%).
-* **Virtual DOM Reconciliation Keys:** Every generated plot card is stamped with a unique domain key (`key={crop.id}` e.g., `key="PLOT-A101"`), enabling React's $O(n)$ heuristic diffing algorithm to preserve component state and avoid costly DOM mutations.
+* **Virtual DOM Reconciliation Keys:** Every generated plot card is stamped with a unique domain key (`key={crop.id}` e.g., `key="PLOT-A101"`), enabling React's O(n) heuristic diffing algorithm to preserve component state and avoid costly DOM mutations.
 * **Visual Telemetry Gauge Bars:** Real-time animated progress bars color-coded by agricultural thresholds:
-  * 🔴 **Critical (< 30%):** `#ef4444`
-  * 🟡 **Moderate (30% – 45%):** `#f59e0b`
-  * 🟢 **Optimal (> 45%):** `#10b981`
+  * **Critical (< 30%):** `#ef4444` (Red)
+  * **Moderate (30% - 45%):** `#f59e0b` (Amber)
+  * **Optimal (> 45%):** `#10b981` (Green)
 * **Interactive Precision Irrigation Simulation (`useState`):**
-  * Farmers can click **`💧 Trigger Water Drip (+15%)`** on any under-irrigated plot.
-  * The handler updates the plot's moisture percentage, transitions the status badge (e.g., from Critical 28% to Moderate 43%), logs the watering timestamp (`Just now (Drip Active)`), and displays a prominent green feedback alert banner (`🔔 Drip cycle triggered for Sugarcane (PLOT-A101)`).
+  * Farmers can click **`Trigger Water Drip (+15%)`** on any under-irrigated plot.
+  * The handler updates the plot's moisture percentage, transitions the status badge (e.g., from Critical 28% to Moderate 43%), logs the watering timestamp (`Just now (Drip Active)`), and displays a prominent green feedback alert banner (`Status Update: Drip cycle triggered for Sugarcane (PLOT-A101)`).
 * **Multi-Criteria Category Filtering:** Real-time filter buttons (`All`, `Critical`, `Moderate`, `Optimal`) with dynamic count pills allowing operators to isolate stressed crop zones instantly.
 
 ---
 
-### 3. ℹ️ About View — System Architecture & Agronomy Principles (`/about`)
+### 3. About View - System Architecture & Agronomy Principles (`/about`)
 * **Single Page Application (SPA) vs. Multi-Page Application (MPA) Comparison:**
   | Evaluation Metric | Traditional Multi-Page App (MPA) | AgriSmart (React SPA) |
   | :--- | :--- | :--- |
@@ -61,48 +61,48 @@ In conventional agricultural portals (built as Multi-Page Applications), every n
 
 ---
 
-### 4. 🧭 Persistent Layout Shell (`Navbar` & `Footer`)
+### 4. Persistent Layout Shell (`Navbar` & `Footer`)
 * **Smart Navigation Bar:**
-  * Brand emblem (`🌾 AgriSmart`) with subtitle.
+  * Brand emblem (`AG AgriSmart`) with subtitle.
   * Active route indicators utilizing `NavLink` with animated active navigation pills.
-  * Live status pill (`🟢 Sensors Online`) with pulsing green radar dot and student batch badge (`B3 • 16010125139`).
+  * Live status pill (`Sensors Online`) with green radar dot and student batch badge (`B3 • 16010125139`).
 * **Semantic Footer:** Somaiya institutional attribution, syllabus alignment, and academic credentials.
 
 ---
 
-## 🏗️ Architecture & Component Hierarchy
+## 3. Architecture & Component Hierarchy
 
 ```
 App (BrowserRouter)
-├── Navbar (Sticky Header with NavLink Routing & Sensor Status)
-├── main (Main Content Container)
-│   └── Routes (Route Matching Engine)
-│       ├── Route path="/"        ──> <Home />
-│       │                               ├── Hero Banner & CTAs
-│       │                               ├── Weather Telemetry Grid (4 Metrics)
-│       │                               └── SPA Architectural Capabilities
-│       │
-│       ├── Route path="/crops"    ──> <Crops />
-│       │                               ├── Alert Banner (State Feedback)
-│       │                               ├── Category Filter Toolbar
-│       │                               └── Crop Grid (Array.map with unique keys)
-│       │                                   ├── Plot Metadata Tags
-│       │                                   ├── Moisture Progress Bar
-│       │                                   ├── Agronomic Advice & Nutrition
-│       │                                   └── Interactive Irrigation Trigger
-│       │
-│       └── Route path="/about"    ──> <About />
-│                                       ├── Case Study Overview
-│                                       ├── SPA vs MPA Comparison Table
-│                                       ├── Technology Stack Breakdown
-│                                       └── Academic Student Metadata Box
-│
-└── Footer (Institutional Credentials & Academic Attribution)
+|-- Navbar (Sticky Header with NavLink Routing & Sensor Status)
+|-- main (Main Content Container)
+|   `-- Routes (Route Matching Engine)
+|       |-- Route path="/"        --> <Home />
+|       |                               |-- Hero Banner & CTAs
+|       |                               |-- Weather Telemetry Grid (4 Metrics)
+|       |                               `-- SPA Architectural Capabilities
+|       |
+|       |-- Route path="/crops"    --> <Crops />
+|       |                               |-- Alert Banner (State Feedback)
+|       |                               |-- Category Filter Toolbar
+|       |                               `-- Crop Grid (Array.map with unique keys)
+|       |                                   |-- Plot Metadata Tags
+|       |                                   |-- Moisture Progress Bar
+|       |                                   |-- Agronomic Advice & Nutrition
+|       |                                   `-- Interactive Irrigation Trigger
+|       |
+|       `-- Route path="/about"    --> <About />
+|                                       |-- Case Study Overview
+|                                       |-- SPA vs MPA Comparison Table
+|                                       |-- Technology Stack Breakdown
+|                                       `-- Academic Student Metadata Box
+|
+`-- Footer (Institutional Credentials & Academic Attribution)
 ```
 
 ---
 
-## 🛠️ Technology Stack & Dependencies
+## 4. Technology Stack & Dependencies
 
 | Tool / Library | Version | Role in Project |
 | :--- | :--- | :--- |
@@ -116,10 +116,10 @@ App (BrowserRouter)
 
 ---
 
-## 💻 How to Run the Application Locally
+## 5. How to Run the Application Locally
 
 The dev server is currently running in the background. You can access it directly at:
-👉 **[http://localhost:5174/](http://localhost:5174/)**
+**[http://localhost:5174/](http://localhost:5174/)**
 
 ### Manual Commands:
 ```bash
@@ -141,25 +141,25 @@ npm run preview
 
 ---
 
-## 📂 Project Directory Structure
+## 6. Project Directory Structure
 
 ```
 react-agriculture-spa/
-├── node_modules/                 # Installed runtime packages
-├── public/                       # Static public assets
-├── src/
-│   ├── components/
-│   │   ├── Navbar.jsx            # Sticky navigation with NavLink & live status
-│   │   └── Footer.jsx            # Academic credentials & institutional footer
-│   ├── pages/
-│   │   ├── Home.jsx              # Agro-climatic dashboard & weather metrics
-│   │   ├── Crops.jsx             # Array.map() crop plot directory & drip triggers
-│   │   └── About.jsx             # SPA vs MPA comparison & architecture stack
-│   ├── App.css                   # Agriculture design tokens, badges & animations
-│   ├── App.jsx                   # BrowserRouter, Routes container & route mapping
-│   └── main.jsx                  # React DOM client mounting entry point
-├── index.html                    # HTML5 application shell
-├── package.json                  # Dependencies manifest (react, react-router-dom, vite)
-├── vite.config.js                # Vite configuration with port 5174
-└── README.md                     # Comprehensive project documentation
+|-- node_modules/                 # Installed runtime packages
+|-- public/                       # Static public assets
+|-- src/
+|   |-- components/
+|   |   |-- Navbar.jsx            # Sticky navigation with NavLink & live status
+|   |   `-- Footer.jsx            # Academic credentials & institutional footer
+|   |-- pages/
+|   |   |-- Home.jsx              # Agro-climatic dashboard & weather metrics
+|   |   |-- Crops.jsx             # Array.map() crop plot directory & drip triggers
+|   |   `-- About.jsx             # SPA vs MPA comparison & architecture stack
+|   |-- App.css                   # Agriculture design tokens, badges & animations
+|   |-- App.jsx                   # BrowserRouter, Routes container & route mapping
+|   `-- main.jsx                  # React DOM client mounting entry point
+|-- index.html                    # HTML5 application shell
+|-- package.json                  # Dependencies manifest (react, react-router-dom, vite)
+|-- vite.config.js                # Vite configuration with port 5174
+`-- README.md                     # Comprehensive project documentation
 ```

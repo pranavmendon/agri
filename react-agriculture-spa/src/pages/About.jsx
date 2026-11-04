@@ -12,7 +12,7 @@ function About() {
 
       <div className="about-grid">
         <div className="about-card primary-card">
-          <h2>🌾 Experiment 08 Case Study Overview</h2>
+          <h2>Experiment 08 Case Study Overview</h2>
           <p>
             The <strong>AgriSmart Telemetry Portal</strong> is developed as part of Experiment 08 for the 
             Web Development Laboratory. Building directly upon the component-driven concepts introduced in Experiment 07, 
@@ -27,7 +27,7 @@ function About() {
         </div>
 
         <div className="about-card">
-          <h2>⚡ SPA vs Multi-Page Application (MPA)</h2>
+          <h2>SPA vs Multi-Page Application (MPA)</h2>
           <table className="comparison-table">
             <thead>
               <tr>
@@ -62,7 +62,7 @@ function About() {
         </div>
 
         <div className="about-card">
-          <h2>🛠️ Technologies & Architectural Stack</h2>
+          <h2>Technologies & Architectural Stack</h2>
           <ul className="tech-list">
             <li>
               <strong>React 19 & JSX:</strong> Declarative component hierarchy and Virtual DOM reconciliation.
@@ -84,7 +84,7 @@ function About() {
         </div>
 
         <div className="about-card meta-box">
-          <h2>🎓 Academic Metadata</h2>
+          <h2>Academic Metadata</h2>
           <div className="meta-grid">
             <div className="meta-entry">
               <span className="meta-k">Institution:</span>

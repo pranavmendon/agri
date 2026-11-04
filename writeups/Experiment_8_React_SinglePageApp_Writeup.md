@@ -55,23 +55,23 @@ The student is required to engineer a responsive Single Page Application (`AgriS
 ## 5. Suggested Component Architecture & Directory Structure
 ```
 react-agriculture-spa/
-├── node_modules/
-│   └── react-router-dom/          [Client-Side Routing Engine]
-├── public/
-├── src/
-│   ├── components/
-│   │   ├── Navbar.jsx             [Header Navigation with NavLink & Live IoT Status]
-│   │   └── Footer.jsx             [Academic Attribution & Somaiya Institutional Credentials]
-│   ├── pages/
-│   │   ├── Home.jsx               [Agro-Climatic Dashboard, Weather Telemetry & SPA Features]
-│   │   ├── Crops.jsx              [Dynamic Array.map() Plot Telemetry, Keys & Irrigation Triggers]
-│   │   └── About.jsx              [SPA vs MPA Comparison Table, Tech Stack & Academic Metadata]
-│   ├── App.css                    [Responsive Agriculture Stylesheet & Visual Design Tokens]
-│   ├── App.jsx                    [BrowserRouter Shell, Routes Container & View Route Mappings]
-│   └── main.jsx                   [React DOM Root Mounting Target]
-├── index.html                     [HTML5 Shell with Typography Preconnects]
-├── package.json                   [Project Manifest & Runtime Dependencies]
-└── vite.config.js                 [Vite Fast-Refresh Bundler Configuration]
+|-- node_modules/
+|   `-- react-router-dom/          [Client-Side Routing Engine]
+|-- public/
+|-- src/
+|   |-- components/
+|   |   |-- Navbar.jsx             [Header Navigation with NavLink & Live IoT Status]
+|   |   `-- Footer.jsx             [Academic Attribution & Somaiya Institutional Credentials]
+|   |-- pages/
+|   |   |-- Home.jsx               [Agro-Climatic Dashboard, Weather Telemetry & SPA Features]
+|   |   |-- Crops.jsx              [Dynamic Array.map() Plot Telemetry, Keys & Irrigation Triggers]
+|   |   `-- About.jsx              [SPA vs MPA Comparison Table, Tech Stack & Academic Metadata]
+|   |-- App.css                    [Responsive Agriculture Stylesheet & Visual Design Tokens]
+|   |-- App.jsx                    [BrowserRouter Shell, Routes Container & View Route Mappings]
+|   `-- main.jsx                   [React DOM Root Mounting Target]
+|-- index.html                     [HTML5 Shell with Typography Preconnects]
+|-- package.json                   [Project Manifest & Runtime Dependencies]
+`-- vite.config.js                 [Vite Fast-Refresh Bundler Configuration]
 ```
 
 ---
@@ -119,7 +119,7 @@ function Navbar() {
     <header className="site-header">
       <div className="header-container">
         <div className="brand">
-          <div className="brand-logo">🌾</div>
+          <div className="brand-logo">AG</div>
           <div className="brand-text">
             <span className="brand-title">AgriSmart</span>
             <span className="brand-subtitle">Smart Agriculture Portal</span>
@@ -128,13 +128,13 @@ function Navbar() {
 
         <nav className="nav-menu">
           <NavLink to="/" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
-            🏠 Home
+            Home
           </NavLink>
           <NavLink to="/crops" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
-            🌱 Crops & Telemetry
+            Crops & Telemetry
           </NavLink>
           <NavLink to="/about" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
-            ℹ️ About System
+            About System
           </NavLink>
         </nav>
 
@@ -243,7 +243,7 @@ function Crops() {
       })
     );
     const target = initialCrops.find(c => c.id === plotId);
-    setNotification(`💧 Drip cycle triggered for ${target?.name} (${plotId}). Telemetry updated!`);
+    setNotification(`Status Update: Drip cycle triggered for ${target?.name} (${plotId}). Telemetry updated.`);
   };
 
   useEffect(() => {
@@ -265,7 +265,7 @@ function Crops() {
 
       {notification && (
         <div className="alert-banner">
-          <span className="alert-icon">🔔</span>
+          <span className="alert-badge">Notice</span>
           <span>{notification}</span>
         </div>
       )}
@@ -308,9 +308,9 @@ function Crops() {
               </div>
 
               <div className="crop-meta-row">
-                <span className="plot-tag">📍 {crop.plotCode}</span>
-                <span className="variety-tag">🌾 {crop.variety}</span>
-                <span className="area-tag">📐 {crop.areaHectares} Ha</span>
+                <span className="plot-tag">Plot: {crop.plotCode}</span>
+                <span className="variety-tag">Variety: {crop.variety}</span>
+                <span className="area-tag">Area: {crop.areaHectares} Ha</span>
               </div>
 
               <div className="moisture-panel">
@@ -344,7 +344,7 @@ function Crops() {
 
               <div className="card-actions">
                 <button onClick={() => handleIrrigate(crop.id)} className="btn btn-sm btn-action">
-                  💧 Trigger Water Drip (+15%)
+                  Trigger Water Drip (+15%)
                 </button>
                 <span className="key-indicator">key="{crop.id}"</span>
               </div>
