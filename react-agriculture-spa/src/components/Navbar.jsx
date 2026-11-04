@@ -6,7 +6,7 @@ function Navbar() {
     <header className="site-header">
       <div className="header-container">
         <div className="brand">
-          <div className="brand-logo">🌾</div>
+          <div className="brand-logo">AG</div>
           <div className="brand-text">
             <span className="brand-title">AgriSmart</span>
             <span className="brand-subtitle">Smart Agriculture Portal</span>
@@ -15,13 +15,13 @@ function Navbar() {
 
         <nav className="nav-menu">
           <NavLink to="/" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
-            🏠 Home
+            Home
           </NavLink>
           <NavLink to="/crops" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
-            🌱 Crops & Telemetry
+            Crops & Telemetry
           </NavLink>
           <NavLink to="/about" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
-            ℹ️ About System
+            About System
           </NavLink>
         </nav>
 

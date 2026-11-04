@@ -88,7 +88,7 @@ function Crops() {
       })
     );
     const target = initialCrops.find(c => c.id === plotId);
-    setNotification(`💧 Drip cycle triggered for ${target?.name} (${plotId}). Telemetry updated!`);
+    setNotification(`Status Update: Drip cycle triggered for ${target?.name} (${plotId}). Telemetry updated.`);
   };
 
   useEffect(() => {
@@ -113,7 +113,7 @@ function Crops() {
 
       {notification && (
         <div className="alert-banner">
-          <span className="alert-icon">🔔</span>
+          <span className="alert-badge">Notice</span>
           <span>{notification}</span>
         </div>
       )}
@@ -156,9 +156,9 @@ function Crops() {
               </div>
 
               <div className="crop-meta-row">
-                <span className="plot-tag">📍 {crop.plotCode}</span>
-                <span className="variety-tag">🌾 {crop.variety}</span>
-                <span className="area-tag">📐 {crop.areaHectares} Ha</span>
+                <span className="plot-tag">Plot: {crop.plotCode}</span>
+                <span className="variety-tag">Variety: {crop.variety}</span>
+                <span className="area-tag">Area: {crop.areaHectares} Ha</span>
               </div>
 
               <div className="moisture-panel">
@@ -199,7 +199,7 @@ function Crops() {
                   className="btn btn-sm btn-action"
                   disabled={crop.moisture >= 60}
                 >
-                  💧 Trigger Water Drip (+15%)
+                  Trigger Water Drip (+15%)
                 </button>
                 <span className="key-indicator">key="{crop.id}"</span>
               </div>
